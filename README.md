@@ -42,13 +42,18 @@ O **Spot Instance Advisor** é uma aplicação Flask que fornece insights sobre 
 ### Execução da Aplicação
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/seu_usuario/spot-instance-advisor.git
+   git clone https://github.com/thdamiaoo/aws-instancias-spot.git
    cd spot-instance-advisor
    ```
 
 2. Execute a aplicação:
    ```bash
-   docker-compose up
+   docker-compose up --build
+   ```
+
+3. Verificar status da aplicação:
+   ```bash
+   docker ps -a
    ```
 
 A aplicação estará disponível em http://localhost:5000.
