@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultor de Instância Spot AWS</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Consultor de Instância Spot AWS</h1>
+            <p>O consultor de instância spot AWS ajuda a determinar os grupos com a menor chance de interrupção e fornece a
+                economia que você obtém em relação às taxas sob demanda.</p>
+        </header>
+
+        <div class="form-section">
+            <h2>Consultar Instâncias</h2>
+            <form id="consultar-form" class="form">
+                <label for="regiao">Região:</label>
+                <select id="regiao" class="form-control"></select>
+
+                <label for="os">Sistema Operacional:</label>
+                <select id="os" class="form-control">
+                    <option value="Linux" selected>Linux</option>
+                    <option value="Windows">Windows</option>
+                </select>
+
+                <label for="cpu">vCPU:</label>
+                <input type="number" id="cpu" class="form-control" value="1" min="1">
+
+                <label for="memoria">Memória (GiB):</label>
+                <input type="number" id="memoria" class="form-control" value="1" min="1">
+
+                <div class="inline-elements">
+                    <label for="tipo_instancia">Tipo de Instância:</label>
+                    <input type="text" id="tipo_instancia" class="form-control" placeholder="Ex: c5d.9xlarge"
+                        minlength="3">
+
+                    <label for="emr" class="emr-label">Incluir EMR:</label>
+                    <input type="checkbox" id="emr" class="form-control">
+                </div>
+
+                <button type="button" class="btn" onclick="consultarInstancias()">Consultar <i
+                        class="fas fa-search"></i></button>
+            </form>
+        </div>
+
+        <div id="error-message" class="error-message"></div>
+
+        <!-- Tabela para os resultados das instâncias -->
+        <div class="form-section">
+            <h2>Resultados das Instâncias</h2>
+            <table id="resultados-instancias" class="table">
+                <thead>
+                    <tr>
+                        <th>Tipo de instância</th>
+                        <th>vCPU</th>
+                        <th>Memória GiB</th>
+                        <th>Economia em relação ao "On-Demand"</th>
+                        <th>Frequência de interrupção</th>
+                        <th>Sistema Operacional</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <div id="pagination-instancias" class="pagination"></div>
+        </div>
+
+        <div class="form-section">
+            <h2>Consultar Histórico</h2>
+            <form id="historico-form" class="form">
+                <label for="tipo_instancia_hist">Tipo de Instância:</label>
+                <input type="text" id="tipo_instancia_hist" class="form-control" placeholder="Ex: c5d.9xlarge"
+                    minlength="3" required>
+                <button type="button" class="btn" onclick="consultarHistoricoPrecos()">Consultar Histórico <i
+                        class="fas fa-clock"></i></button>
+            </form>
+        </div>
+
+        <!-- Tabela para os resultados do histórico de preços -->
+        <div class="form-section">
+            <h2>Histórico de Preços</h2>
+            <table id="resultados-historico" class="table">
+                <thead>
+                    <tr>
+                        <th>Tipo de instância</th>
+                        <th>vCPU</th>
+                        <th>Memória GiB</th>
+                        <th>Preço Spot</th>
+                        <th>Economia em relação ao "On-Demand"</th>
+                        <th>Frequência de interrupção</th>
+                        <th>Data de atualização</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <div id="pagination-historico" class="pagination"></div> <!-- Adicionado -->
+        </div>
+
+        <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>

@@ -1,0 +1,5 @@
+# Ignore Docker related files
+*.log
+*.pid
+*.swp
+*.swo

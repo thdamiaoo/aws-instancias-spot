@@ -1,0 +1,27 @@
+{
+  "name": "spot-instance-advisor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thdamiaoo/spot-instance-advisor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thdamiaoo/spot-instance-advisor/issues"
+  },
+  "homepage": "https://github.com/thdamiaoo/spot-instance-advisor#readme",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "jest-environment-jsdom": "^29.7.0"
+  }
+}
